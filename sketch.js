@@ -11,7 +11,7 @@ function preload() {
 waterImg = loadImage("powers/water.png");
 fireImg = loadImage("powers/fire.png");
 faunaImg = loadImage("powers/fauna.png");
-mapImg = loadImage("map.JPG");
+mapImg = loadImage("map.jpg");
 monster1Img = loadImage("monsters/monster1.png");
 monster2Img = loadImage("monsters/monster2.png");
 monster3Img = loadImage("monsters/monster3.png");
@@ -23,7 +23,7 @@ barimg= loadImage("powers/healthbar.png");
 function setup() {
   createCanvas(2000,1000);
   back = createSprite(1000,500,1500,1000);
- // back.addImage("map",mapImg)
+  back.addImage("map",mapImg)
   back.scale = 4
   player = createSprite(1000, 500, 50, 50);
   player.shapeColor = "red";
@@ -51,10 +51,10 @@ function setup() {
     
     console.log(waterG)
     
-    health = createSprite(300, windowHeight+50, 560, 20)
+    health = createSprite(windowWidth/2-300, windowHeight/2, 560, 20)
     health.shapeColor = "rgb(0,300,0)"
   
-    healthbar= createSprite(300,windowHeight+50)
+    healthbar= createSprite(windowWidth/2-300,windowHeight/2)
     healthbar.addImage(barimg)
     healthbar.scale= 0.27
    
@@ -79,9 +79,19 @@ function draw() {
   if(keyDown(LEFT_ARROW)){
     player.x = player.x-10
   }
-
-  
-
+  health.x = player.x-600
+  healthbar.x = player.x-600
+  health.y = player.y
+  healthbar.y = player.y
+  if(health.x<0 && healthbar.x<0 ){ 
+    healthbar.x =windowWidth/2-300;
+    health.x =windowWidth/2-300;
+   
+  }
+if(health.isTouching(player) && healthbar.isTouching(player)){
+  health.y = player.y-100
+  healthbar.y = player.y-100
+}
 
   monster1= createSprite(Math.round(random(0,800)),Math.round(random(0,800)));
     monster1.addImage("moving_bat",monster1Img);
