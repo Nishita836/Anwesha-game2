@@ -11,7 +11,7 @@ function preload() {
 waterImg = loadImage("powers/water.png");
 fireImg = loadImage("powers/fire.png");
 faunaImg = loadImage("powers/fauna.png");
-mapImg = loadImage("map.jpg");
+mapImg = loadImage("map.JPG");
 monster1Img = loadImage("monsters/monster1.png");
 monster2Img = loadImage("monsters/monster2.png");
 monster3Img = loadImage("monsters/monster3.png");
